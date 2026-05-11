@@ -15,7 +15,7 @@
     <artifactId>hibernate-dao-homework</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>hibernate-dao-homework</name>
-    <description>Netology homework 8.4 - ORM Hibernate DAO</description>
+    <description>Netology homework 8.4 - ORM Hibernate DAO with Flyway migrations</description>
 
     <properties>
         <java.version>17</java.version>
@@ -34,6 +34,10 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

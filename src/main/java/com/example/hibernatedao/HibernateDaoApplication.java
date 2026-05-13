@@ -21,6 +21,7 @@ public class HibernateDaoApplication {
             personRepository.save(new Person("Petr", "Petrov", 30, "+79007654321", "Moscow"));
             personRepository.save(new Person("Anna", "Sidorova", 22, "+79001112233", "Saint Petersburg"));
             personRepository.save(new Person("Maria", "Kozlova", 35, "+79009998877", "Kazan"));
+            personRepository.save(new Person("Alexey", "Smirnov", 28, "+79005554433", "Moscow"));
         };
     }
 }

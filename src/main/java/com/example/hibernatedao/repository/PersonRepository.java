@@ -2,28 +2,21 @@ package com.example.hibernatedao.repository;
 
 import com.example.hibernatedao.entity.Person;
 import com.example.hibernatedao.entity.PersonId;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public class PersonRepository {
+public interface PersonRepository extends JpaRepository<Person, PersonId> {
 
-    @PersistenceContext
-    private EntityManager entityManager;
+    // Найти всех людей по городу
+    List<Person> findByCityOfLiving(String city);
 
-    @Transactional
-    public void save(Person person) {
-        entityManager.persist(person);
-    }
+    // Найти всех людей младше указанного возраста, отсортированных по возрасту по возрастанию
+    List<Person> findByAgeLessThanOrderByAgeAsc(int age);
 
-    public List<Person> getPersonsByCity(String city) {
-        return entityManager
-                .createQuery("SELECT p FROM Person p WHERE p.cityOfLiving = :city", Person.class)
-                .setParameter("city", city)
-                .getResultList();
-    }
+    // Найти человека по имени и фамилии (Optional)
+    Optional<Person> findByNameAndSurname(String name, String surname);
 }
